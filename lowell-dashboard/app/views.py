@@ -3,5 +3,6 @@ from flask import render_template, request, make_response, redirect, session, ur
 
 @app.route("/")
 @app.route("/home")
+@app.route("/index")
 def home():
-    return render_template('home.html')
+    return render_template('home.html')	
