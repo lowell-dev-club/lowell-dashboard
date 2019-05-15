@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Title -->
+	<title>{% block title %}{% endblock %}</title>
+
+	<!-- Meta Data -->
+	<meta charset="utf-8">
+	<meta name="robots" content="index,follow">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="keywords" content="Lowell,Highschool,Dashboard,Lowell Dashboard,Lowell Highschool">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<link rel="author" href="Cappillen Lee and Rafael Cenzano">
+	<link rel="manifest" href="{{ url_for('static', filename='img/manifest.json') }}">
+	<meta name="msapplication-TileColor" content="#da532c">
+	
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16x16.png') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32x32.png') }}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='img/favicon-96x96.png') }}">
+
+	<!-- Apple Icon -->
+	<link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='img/apple-icon-57x57.png') }}">
+	<link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='img/apple-icon-60x60.png') }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='img/apple-icon-72x72.png') }}">
+	<link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='img/apple-icon-76x76.png') }}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='img/apple-icon-114x114.png') }}">
+	<link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='img/apple-icon-120x120.png') }}">
+	<link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='img/apple-icon-144x144.png') }}">
+	<link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='img/apple-icon-152x152.png') }}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-icon-180x180.png') }}">
+
+	<!-- Andriod Icon -->
+	<link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static', filename='img/android-icon-192x192.png') }}">
+
+	<!-- Facebook -->
+	<meta property="og:description" content="Website to help students at Lowell High School">
+	<meta property="og:title" content="Lowell Dashboard">
+	<meta property="og:site_name" content="Lowell Dashboard">
+	<meta property="og:image" content={{ url_for('static', filename='img/lowell_dashboard.jpeg') }}>
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="Lowell Dashboard">
+	<meta name="twitter:title" content="Lowell Dashboard">
+	<meta name="twitter:description" content="Website to help students at Lowell High School">
+	<meta name="twitter:image" content={{ url_for('static', filename='img/lowell_dashboard.jpeg') }}>
+
+	{% block meta %}
+	{% endblock %}
+    {% block head_css %}
+    {% endblock %}
+    {% block head_js %}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    {% block trailing_js %}
+    {% endblock %}
+</body>
+</html>
