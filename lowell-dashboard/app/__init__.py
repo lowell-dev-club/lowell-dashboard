@@ -1,7 +1,7 @@
 # Import logging for showing what occurs
 import logging
 # Import Flask for flask app object
-from flask import Flask, render_template
+from flask import Flask
 # Import Flask appbuilder functions to create the appbuilder object
 from flask_sqlalchemy import SQLAlchemy
 
@@ -15,13 +15,11 @@ logging.getLogger().setLevel(logging.DEBUG)
 # Create flask app object
 app = Flask(__name__)
 
-# Get Configs from config.py
-app.config.from_object('config')
+# Add Configurations to app
+app.config.from_pyfile('config.py', silent=True)
 
-# Create Database object frmo flask app object
-db = SQLAlchemy(app)
+# Create Database object from flask app object
+#db = SQLAlchemy(app)
 
-@app.route("/")
-@app.route("/home")
-def home():
-    return render_template('home.html')
+# Import views
+from app import views
