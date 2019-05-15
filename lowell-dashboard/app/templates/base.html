@@ -49,14 +49,22 @@
 	<meta name="twitter:description" content="Website to help students at Lowell High School">
 	<meta name="twitter:image" content={{ url_for('static', filename='img/lowell_dashboard.jpeg') }}>
 
+	<!-- Meta Date -->
 	{% block meta %}
 	{% endblock %}
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/navbar.css') }}>
     {% block head_css %}
     {% endblock %}
+
+    <!-- JS -->
     {% block head_js %}
     {% endblock %}
+
 </head>
 <body>
+	{% include "navbar.html" %}
     {% block content %}
     {% endblock %}
     {% block trailing_js %}
