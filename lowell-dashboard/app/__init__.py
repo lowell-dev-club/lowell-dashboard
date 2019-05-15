@@ -15,10 +15,10 @@ logging.getLogger().setLevel(logging.DEBUG)
 # Create flask app object
 app = Flask(__name__)
 
-# Get configurations from config.py
-app.config.from_object('config')
+# Add configurations to app
+app.config.from_pyfile('config.py', silent=True)
 
-# Create Database object frmo flask app object
+# Create Database object from flask app object
 db = SQLAlchemy(app)
 
 # Import views
