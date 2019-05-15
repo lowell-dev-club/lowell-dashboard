@@ -15,7 +15,7 @@ logging.getLogger().setLevel(logging.DEBUG)
 # Create flask app object
 app = Flask(__name__)
 
-# Get Configs from config.py
+# Get configurations from config.py
 app.config.from_object('config')
 
 # Create Database object frmo flask app object
