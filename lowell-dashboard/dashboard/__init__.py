@@ -22,4 +22,4 @@ app.config.from_pyfile('config.py', silent=True)
 #db = SQLAlchemy(app)
 
 # Import views
-import dashboard.views
+from dashboard import views
