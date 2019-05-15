@@ -22,4 +22,4 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 # Import views
-import app.views
+from app import views
