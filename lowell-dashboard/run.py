@@ -1,5 +1,5 @@
 # Import app for possibly gunicorn in future
-from dashboard import app
+from app import app
 
 # run app
 app.run(
