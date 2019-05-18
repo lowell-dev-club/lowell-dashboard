@@ -20,10 +20,10 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='img/favicon-96x96.png') }}">
 
 	<!-- Apple Icon -->
-	<link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='img/apple-icon-57x57.png') }}">
-	<link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='img/apple-icon-60x60.png') }}">
-	<link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='img/apple-icon-72x72.png') }}">
-	<link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='img/apple-icon-76x76.png') }}">
+	<link rel="apple-touch-icon" sizes="57x57"   href="{{ url_for('static', filename='img/apple-icon-57x57.png') }}">
+	<link rel="apple-touch-icon" sizes="60x60"   href="{{ url_for('static', filename='img/apple-icon-60x60.png') }}">
+	<link rel="apple-touch-icon" sizes="72x72"   href="{{ url_for('static', filename='img/apple-icon-72x72.png') }}">
+	<link rel="apple-touch-icon" sizes="76x76"   href="{{ url_for('static', filename='img/apple-icon-76x76.png') }}">
 	<link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='img/apple-icon-114x114.png') }}">
 	<link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='img/apple-icon-120x120.png') }}">
 	<link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='img/apple-icon-144x144.png') }}">
@@ -31,6 +31,10 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-icon-180x180.png') }}">
 
 	<!-- Andriod Icon -->
+	<link rel="icon" type="image/png" sizes="48x48"    href="{{ url_for('static', filename='img/android-icon-48x48.png') }}">
+	<link rel="icon" type="image/png" sizes="72x72"    href="{{ url_for('static', filename='img/android-icon-72x72.png') }}">
+	<link rel="icon" type="image/png" sizes="96x96"    href="{{ url_for('static', filename='img/android-icon-96x96.png') }}">
+	<link rel="icon" type="image/png" sizes="144x144"  href="{{ url_for('static', filename='img/android-icon-144x144.png') }}">
 	<link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static', filename='img/android-icon-192x192.png') }}">
 
 	<!-- Facebook -->
@@ -45,17 +49,27 @@
 	<meta name="twitter:description" content="Website to help students at Lowell High School">
 	<meta name="twitter:image" content={{ url_for('static', filename='img/lowell_dashboard.jpeg') }}>
 
+	<!-- Meta Date -->
 	{% block meta %}
 	{% endblock %}
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/navbar.css') }}>
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/footer.css') }}>
     {% block head_css %}
     {% endblock %}
+
+    <!-- JS -->
     {% block head_js %}
     {% endblock %}
+
 </head>
 <body>
+	{% include "navbar.html" %}
     {% block content %}
     {% endblock %}
     {% block trailing_js %}
     {% endblock %}
+    {% include "footer.html" %}
 </body>
 </html>
