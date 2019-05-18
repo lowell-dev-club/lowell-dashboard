@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- Title -->
-	<title>{% block title %}{% endblock %}</title>
+	<title>{% block title %}{% endblock %} - Lowell Dashboard</title>
 
 	<!-- Meta Data -->
 	<meta charset="utf-8">
@@ -49,17 +49,20 @@
 	<meta name="twitter:description" content="Website to help students at Lowell High School">
 	<meta name="twitter:image" content={{ url_for('static', filename='img/lowell_dashboard.jpeg') }}>
 
-	<!-- Meta Date -->
+	<!-- Meta Data -->
 	{% block meta %}
 	{% endblock %}
 
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/navbar.css') }}>
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/footer.css') }}>
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/grid.css') }}>
     {% block head_css %}
     {% endblock %}
 
     <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src={{ url_for('static', filename='js/navbar.js') }}></script>
     {% block head_js %}
     {% endblock %}
 
