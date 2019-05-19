@@ -20,5 +20,5 @@ MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
 MAIL_USE_SSL = True
 MAIL_USERNAME = 'LowellHelpForum@gmail.com'
-MAIL_PASSWORD = secret.EMAIL_PASS
+# MAIL_PASSWORD = secret.EMAIL_PASS
 MAIL_DEFAULT_SENDER = 'LowellHelpForum <LowellHelpForum@gmail.com>'
