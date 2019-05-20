@@ -38,3 +38,6 @@ def initializedb():
 	post = Post.query.first()
 	print(post.user_id)
 	print(post.author)
+
+def dropdb():
+	db.drop_all()

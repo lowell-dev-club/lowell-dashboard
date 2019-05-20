@@ -24,5 +24,3 @@ db = SQLAlchemy(app)
 
 # Import views
 from app import views
-from app import initializedb
-initializedb.initializedb()
