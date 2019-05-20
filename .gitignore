@@ -103,5 +103,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# Extension
 *.DS_Store
 lowell-dashboard/secret.py
+lowell-dashboard/app/app.db
