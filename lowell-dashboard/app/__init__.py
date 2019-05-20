@@ -19,7 +19,10 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py', silent=True)
 
 # Create Database object from flask app object
+# use the function db.create_all() to make the db
 db = SQLAlchemy(app)
 
 # Import views
 from app import views
+from app import initializedb
+initializedb.initializedb()
