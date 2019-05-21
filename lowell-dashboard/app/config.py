@@ -3,7 +3,7 @@ Put config materials here
 Ex: database configurations, keys, etc.
 '''
 
-import secret
+from app import secret
 
 '''
 To create a secret key run the program
