@@ -66,6 +66,8 @@ nav ul li ul li a {
 .nav-mobile {
   display: none;
   position: absolute;
+  top: 0px;
+  right: 10px;
   background: #262626;
   height: 60px;
   width: 60px;
