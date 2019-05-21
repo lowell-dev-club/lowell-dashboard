@@ -5,11 +5,12 @@ footer {
 footer h3 {
 	font-size: 35px;
 	text-decoration: underline;
-	margin-top: 5px;
+	padding-top: 10px;
 	margin-bottom: 5px;
 }
 footer h4 {
 	margin-top: -5px;
+	padding-bottom: 10px;
 }
 footer h5 {
 	color: #000;
