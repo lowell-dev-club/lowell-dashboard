@@ -20,6 +20,7 @@ canvas {
 .title {
 	font-size: 30px;
     padding-top: 60px;
+    color: #191919;
 }
 /** FADE IN CSS **/
 .fade-in {
