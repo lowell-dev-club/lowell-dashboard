@@ -55,6 +55,7 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/base.css') }}>
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/navbar.css') }}>
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/footer.css') }}>
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/grid.css') }}>
@@ -69,7 +70,9 @@
 
 </head>
 <body>
+
 	{% include "navbar.html" %}
+
 	{% with messages = get_flashed_messages(with_categories=true) %}
 		{% if messages %}
 			{% for category, message in messages %}
@@ -79,10 +82,14 @@
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
+
     {% block content %}
     {% endblock %}
+
     {% block trailing_js %}
     {% endblock %}
+
     {% include "footer.html" %}
+    
 </body>
 </html>

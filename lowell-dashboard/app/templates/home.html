@@ -7,8 +7,12 @@
 {% endblock %}
 
 {% block head_css%}
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/home.css') }}>
 {% endblock %}
 
 {% block content %}
-	<h1>Hello There.</h1>
+	<div class="title">
+		<h1 class="fade-in float-up">Lowell</h1>
+		<h1 class="fade-in float-up">Dashboard</h1>
+	</div>
 {% endblock %}
