@@ -10,6 +10,11 @@ def home():
     return render_template('home.html')
 
 
+@app.route("/license")
+def license():
+    return render_template('license.html')
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
