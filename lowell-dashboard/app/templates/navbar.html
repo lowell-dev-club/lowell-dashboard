@@ -27,15 +27,20 @@
                     <a href="/news">News <i class="far fa-newspaper nav-icon"></i></a>
                 </li>
                 <li>
-                    <a href="#">Login/Register <i class="fas fa-sign-in-alt nav-icon"></i></a>
-                    <ul class="nav-dropdown">
-                        <li>
-                            <a href="/login">Login <i class="fas fa-sign-in-alt nav-icon"></i></a>
-                        </li>
-                        <li>
-                            <a href="/register">Register <i class="fas fa-user-plus nav-icon"></i></i></a>
-                        </li>
-                    </ul>
+                    {% if current_user.is_authenticated %}
+                        <a href="/account">Account <i class="fas fa-sign-in-alt nav-icon"></i></a>
+                        <a href="/logout">Logout <i class="fas fa-sign-in-alt nav-icon"></i></a>
+                    {% else %}
+                        <a href="#">Login/Register <i class="fas fa-sign-in-alt nav-icon"></i></a>
+                        <ul class="nav-dropdown">
+                            <li>
+                                <a href="/login">Login <i class="fas fa-sign-in-alt nav-icon"></i></a>
+                            </li>
+                            <li>
+                                <a href="/register">Register <i class="fas fa-user-plus nav-icon"></i></i></a>
+                            </li>
+                        </ul>
+                    {% endif %}
                 </li>
                 <li>
                     <a href="#">Settings/Logout<i class="fas fa-user-cog nav-icon"></i></a>
