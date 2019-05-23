@@ -5,7 +5,7 @@ from flask import Flask
 # Import Flask appbuilder functions to create the appbuilder object
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-
+from flask_login import LoginManager
 """
  Logging configuration
 """
@@ -22,6 +22,7 @@ app.config.from_pyfile('config.py', silent=True)
 # use the function db.create_all() to make the db
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
 
 # Import views
 from app import views
