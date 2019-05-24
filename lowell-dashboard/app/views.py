@@ -3,6 +3,7 @@ from flask import render_template, request, make_response, redirect, session, ur
 from hashlib import sha256
 from app.forms import RegistrationForm, LoginForm
 from app.models import User, Post
+from app.secret import SECRET_SALT
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -24,7 +25,7 @@ def register():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(sha256((form.password.data + form.email.data).encode()).hexdigest()).decode('utf-8')
+        hashed_password = bcrypt.generate_password_hash(sha256((form.password.data + form.email.data + SECRET_SALT).encode()).hexdigest()).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
@@ -40,12 +41,12 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        if user and bcrypt.check_password_hash(user.password, sha256((form.password.data + form.email.data).encode()).hexdigest()):
+        if user and bcrypt.check_password_hash(user.password, sha256((form.password.data + form.email.data + SECRET_SALT).encode()).hexdigest()):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
-            flash('Login Unseccessful. Please check email and password', 'danger')
+            flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', form=form)
 
 
