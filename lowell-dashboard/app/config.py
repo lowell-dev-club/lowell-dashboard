@@ -12,7 +12,8 @@ secrets.token_hex(16)
 '''
 
 SECRET_KEY = secret.SECRET_KEY
-SQLALCHEMY_DATABASE_URI = 'postgresql://'
+SQLALCHEMY_DATABASE_URI = ''
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 '''
 Configurations for the email api
