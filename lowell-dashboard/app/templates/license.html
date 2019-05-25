@@ -2,10 +2,16 @@
 
 {% block title %}Project License{% endblock %}
 
+{% block head_meta %}
+    <meta name="description" content="Project License of Lowell Dashboard">
+{% endblock %}
+
 {% block head_css%}
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/license.css') }}>
 {% endblock %}
 
 {% block content %}
+    <div class="license">
     <h2 id="TOP">Table of contents for License</h2>
     <br>
     <div id="toc_container">
@@ -18,7 +24,7 @@
             <li><a href="#Submission_of_Contributions"><p>Submission of Contributions</p></a></li>
             <li><a href="#Trademarks"><p>Trademarks</p></a></li>
             <li><a href="#Disclaimer_of_Warranty"><p>Disclaimer of Warranty</p></a></li>
-            <li><a href="#Limitation_of_Liability"><p>Limitation of Liability</p></a></li>
+            <li><a href="#Limitation_of_Liability"><p>Limitation of Liability</p></a  ></li>
             <li><a href="#Accepting_Warranty_or_Additional_Liability"><p>Accepting Warranty or Additional Liability</p></a></li>
             <li><a href="#Copyright"><p>Copyright</p></a></li>
         </ul>
@@ -226,7 +232,7 @@
 
     <h4>END OF TERMS AND CONDITIONS</h4>
     <br>
-    <h2 id="Copyright">© Copyright 2019 Lowell-Dashboard Github Organization<h1>
+    <h2 id="Copyright">© Copyright 2019 Lowell-Dashboard Github Organization</h2>
     <br>
     <p>Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
@@ -240,4 +246,5 @@
        limitations under the License.
     </p>
     <a href="#TOP"><p>^ Back to Top</p></a>
+    </div>
 {% endblock %}

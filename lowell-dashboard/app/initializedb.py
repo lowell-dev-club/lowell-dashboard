@@ -2,7 +2,7 @@ from app import db
 from app.models import User, Post
 
 def initializedb():
-	db.create_all()	
+	db.create_all()
 
 	# making the users
 	user_1 = User(username='cap', email='c@demo.com', password='pass')
