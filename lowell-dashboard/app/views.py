@@ -22,6 +22,11 @@ def license():
     return render_template('license.html')
 
 
+@app.route("/files/disclaimer")
+def disclaimer():
+    return render_template('disclaimer.html')
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
