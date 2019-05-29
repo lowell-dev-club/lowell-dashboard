@@ -26,9 +26,13 @@
                 <li>
                     <a href="/news">News <i class="far fa-newspaper nav-icon"></i></a>
                 </li>
+                {% if current_user.is_authenticated %} <!-- Will later change to if user is admin -->
+                <li>
+                    <a href="/post/new">Post News <i class="fas fa-sign-in-alt nav-icon"></i></a>
+                </li>
+                {% endif %}
                 <li>
                 {% if current_user.is_authenticated %}
-                    <a href="/new_post">Post News <i class="fas fa-sign-in-alt nav-icon"></i></a>
                     <a href="#">{{ current_user.username }} <i class="fas fa-user-cog nav-icon"></i></a>
                     <ul class="nav-dropdown">
                         <li>
@@ -50,7 +54,6 @@
                     </ul>
                 {% endif %}
                 </li>
-                
             </ul>
         </nav>
     </div>
