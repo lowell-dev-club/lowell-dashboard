@@ -89,3 +89,12 @@ def account():
         form.email.data = current_user.email
     image_file = url_for('static', filename='img/' + current_user.image_file)
     return render_template('account.html', image_file=image_file, form=form)
+
+@app.route('/news')
+def news():
+    return render_template('news.html')
+
+@app.route('/post/new')
+@login_required
+def new_post():
+    return render_template('create_post.html')
