@@ -28,6 +28,7 @@
                 </li>
                 <li>
                     {% if current_user.is_authenticated %}
+                        <a href="/new_post">Post News <i class="fas fa-sign-in-alt nav-icon"></i></a>
                         <a href="/account">Account <i class="fas fa-sign-in-alt nav-icon"></i></a>
                         <a href="/logout">Logout <i class="fas fa-sign-in-alt nav-icon"></i></a>
                     {% else %}
