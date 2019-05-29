@@ -4,7 +4,7 @@ from PIL import Image
 from app import app, db, bcrypt
 from flask import render_template, request, make_response, redirect, session, url_for, send_file, flash
 from hashlib import sha256
-from app.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from app.models import User, Post
 from app.secret import SECRET_SALT
 from flask_login import login_user, current_user, logout_user, login_required
@@ -94,7 +94,11 @@ def account():
 def news():
     return render_template('news.html')
 
-@app.route('/post/new')
+@app.route('/post/new', methods=['GET', 'POST'])
 @login_required
 def new_post():
-    return render_template('create_post.html')
+    form = PostForm()
+    if form.validate_on_submit():
+        flash('Your post has been created', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_post.html', form=form)
