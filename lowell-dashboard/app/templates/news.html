@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="">
+          <img class="" src="{{ url_for('static', filename='img/' + post.author.image_file) }}">
+          <div class="">
+            <div class="">
+              <a class="" href="#">{{ post.author.username }}</a>
+              <small class="">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2><a class="" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <p class="">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
