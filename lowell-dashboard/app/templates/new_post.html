@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="content">
+		<form method="POST" action="">
+			<!-- Part of protecting the site from attacks -->
+			{{ form.hidden_tag() }}
+			<fieldset>
+				<legend>{{ legend }}</legend>
+				<div class="form-group">
+					{{ form.title.label() }}
+					{% if form.title.errors %}
+                        {{ form.title(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.title() }}
+                    {% endif %}
+				</div>
+				<div class="form-group">
+					{{ form.content.label() }}
+					{% if form.content.errors %}
+                        {{ form.content(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.content.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.content() }}
+                    {% endif %}
+				</div>
+			</fieldset>
+			<div class="form-group">
+				{{ form.submit() }}
+			</div>
+		</form>
+	</div>
+{% endblock %}
