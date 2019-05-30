@@ -10,7 +10,8 @@
           <div>
             <a href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
           </div>
-          <button>Delete Post</button>
+          <!-- Uncomment when we have a modal to check if the user wants to delete the post -->
+          <!-- <button>Delete Post</button> -->
           <form action="{{ url_for('delete_post', post_id=post.id) }}", method="POST">
             <input type="submit" value="Delete">
           </form>
@@ -20,6 +21,6 @@
       <p class="">{{ post.content }}</p>
     </div>
   </article>
-  <!-- Insert a model here to confirm if the user wants to delete the post -->
+  <!-- Insert a modal here to confirm if the user wants to delete the post -->
   <!-- https://getbootstrap.com/docs/4.0/components/modal/ -->
 {% endblock content %}
