@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <article class="">
+    <img class="" src="{{ url_for('static', filename='img/' + post.author.image_file) }}">
+    <div class="">
+      <div class="">
+        <a class="" href="#">{{ post.author.username }}</a>
+        <small class="">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+        {% if post.author == current_user %}
+          <div>
+            <a href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
+          </div>
+          <!-- Uncomment when we have a modal to check if the user wants to delete the post -->
+          <!-- <button>Delete Post</button> -->
+          <form action="{{ url_for('delete_post', post_id=post.id) }}", method="POST">
+            <input type="submit" value="Delete">
+          </form>
+        {% endif %}
+      </div>
+      <h2>{{ post.title }}</a></h2>
+      <p class="">{{ post.content }}</p>
+    </div>
+  </article>
+  <!-- Insert a modal here to confirm if the user wants to delete the post -->
+  <!-- https://getbootstrap.com/docs/4.0/components/modal/ -->
+{% endblock content %}
