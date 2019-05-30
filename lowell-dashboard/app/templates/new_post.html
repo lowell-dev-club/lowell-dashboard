@@ -5,7 +5,7 @@
 			<!-- Part of protecting the site from attacks -->
 			{{ form.hidden_tag() }}
 			<fieldset>
-				<legend>News</legend>
+				<legend>{{ legend }}</legend>
 				<div class="form-group">
 					{{ form.title.label() }}
 					{% if form.title.errors %}
