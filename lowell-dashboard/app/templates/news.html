@@ -1,16 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-    {% for post in posts %}
-        <article class="">
-          <img class="" src="{{ url_for('static', filename='img/' + post.author.image_file) }}">
+  {% for post in posts.items %}
+      <article class="">
+        <img class="" src="{{ url_for('static', filename='img/' + post.author.image_file) }}">
+        <div class="">
           <div class="">
-            <div class="">
-              <a class="" href="#">{{ post.author.username }}</a>
-              <small class="">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-            </div>
-            <h2><a class="" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
-            <p class="">{{ post.content }}</p>
+            <a class="" href="#">{{ post.author.username }}</a>
+            <small class="">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
           </div>
-        </article>
-    {% endfor %}
+          <h2><a class="" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+          <p class="">{{ post.content }}</p>
+        </div>
+      </article>
+  {% endfor %}
+  {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+      {% if posts.page == page_num %}
+        <!-- Have a different style for the current page -->
+        <a href="{{ url_for('news', page=page_num) }}">{{ page_num }}</a>
+      {% else %}
+        <a href="{{ url_for('news', page=page_num) }}">{{ page_num }}</a>
+      {% endif%}
+    {% else %}
+      ...
+    {% endif%}
+  {% endfor%}
 {% endblock content %}
