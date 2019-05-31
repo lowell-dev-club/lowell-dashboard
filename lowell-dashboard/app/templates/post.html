@@ -4,7 +4,7 @@
     <img class="" src="{{ url_for('static', filename='img/' + post.author.image_file) }}">
     <div class="">
       <div class="">
-        <a class="" href="#">{{ post.author.username }}</a>
+        <a class="" href="{{ url_for('user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
         <small class="">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
         {% if post.author == current_user %}
           <div>
