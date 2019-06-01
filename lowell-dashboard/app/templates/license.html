@@ -7,18 +7,18 @@
 {% endblock %}
 
 {% block head_css%}
-    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/license.css') }}>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/all_files.css') }}>
 {% endblock %}
 
 {% block head_js %}
-    <script src={{ url_for('static', filename='js/license.js') }}></script>
+    <script src={{ url_for('static', filename='js/all_files.js') }}></script>
 {% endblock %}
 
 {% block content %}
     
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
-    <div class="license">
+    <div class="file">
     <br>
     <div class="term-boundries">
         <div class="terms">

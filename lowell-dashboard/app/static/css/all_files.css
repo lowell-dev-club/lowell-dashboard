@@ -1,4 +1,4 @@
-.license {
+.file {
 	text-align: center;
 }
 .term-boundries {
@@ -7,6 +7,7 @@
 	background-color: #f4f4f4;
 }
 .terms {
+	font-size: 20px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	margin: auto;

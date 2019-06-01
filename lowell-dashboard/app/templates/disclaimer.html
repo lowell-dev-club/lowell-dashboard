@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Disclaimer{% endblock %}
+
+{% block head_meta %}
+    <meta name="description" content="Disclaimer of Lowell Dashboard">
+{% endblock %}
+
+{% block head_css%}
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/all_files.css') }}>
+{% endblock %}
+
+{% block head_js %}
+    <script src={{ url_for('static', filename='js/all_files.js') }}></script>
+{% endblock %}
+
+{% block content %}
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <br>
+    <br>
+
+    <div class="file">
+    	<div class="term-boundries">
+    		<div class="terms">
+
+    			<h3>Lowell Dashboard Disclaimer</h3>
+
+    			<p>We are in no way run by or affiliated with Lowell High school
+           		   in San Francisco. This site was created by Lowell students
+       		       for Lowell students. If there is ever a bug or something a
+           		   problem that needs to reported, use the websites report function
+       		       and do not ask Lowell school staff for help with this website
+        		</p>
+        	</div>
+        </div>
+    </div>
+
+{% endblock %}

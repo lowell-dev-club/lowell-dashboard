@@ -22,6 +22,11 @@ def license():
     return render_template('license.html')
 
 
+@app.route("/files/disclaimer")
+def disclaimer():
+    return render_template('disclaimer.html')
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -92,7 +97,8 @@ def account():
 
 @app.route('/news')
 def news():
-    posts = Post.query.all()
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
     return render_template('news.html', posts=posts)
 
 @app.route('/post/new', methods=['GET', 'POST'])
@@ -147,3 +153,15 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
+
+@app.route("/user/<string:username>")
+def user_posts(username):
+    '''
+    Grabs all posts from the user
+    Maybe in the future have it look to their account page
+    '''
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user).order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template('user_posts.html', posts=posts, user=user)
+
