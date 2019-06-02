@@ -10,9 +10,9 @@ from app.secret import SECRET_SALT
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
-@app.route("/")
-@app.route("/home")
 @app.route("/index")
+@app.route("/home")
+@app.route("/")
 def home():
     return render_template('home.html')
 
