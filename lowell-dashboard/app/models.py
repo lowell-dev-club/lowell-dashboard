@@ -21,6 +21,11 @@ class User(db.Model, UserMixin):
         nullable=False,
         default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
+    confirmed = db.Column(db.Boolean, unique=False, default=False)
+    registered = db.Column(
+        db.DateTime,
+        nullable=False,
+        default=datetime.utcnow)
     '''
     User has a relationship to the Post model
     backref - use the property author to get the user related to the post
