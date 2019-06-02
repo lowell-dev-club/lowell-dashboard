@@ -4,10 +4,11 @@ import logging
 # Import Flask for flask app object
 from flask import Flask
 
-# Import Flask appbuilder functions to create the appbuilder object
+# Import Flask modules to create objects for our app
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask_mail import Mail
 
 """
  Logging configuration
@@ -29,6 +30,8 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
+
+mail = Mail(app)
 
 # Import views
 from app import views
