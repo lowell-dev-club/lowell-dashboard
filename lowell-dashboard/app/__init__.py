@@ -33,5 +33,9 @@ login_manager.login_message_category = 'info'
 
 mail = Mail(app)
 
+# importing all the models and initializing them
+from app.models import *
+db.create_all()
+
 # Import views
 from app import views
