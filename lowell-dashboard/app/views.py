@@ -4,8 +4,8 @@ from PIL import Image
 from app import app, db, bcrypt, mail
 from flask import render_template, request, make_response, redirect, session, url_for, send_file, flash, abort
 from hashlib import sha256
-from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
-from app.token import 
+from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm, ActivationConfirmation
+from app.token import generate_confirmation_token, confirm_token
 from app.models import User, Post
 from app.secret import SECRET_SALT
 from flask_mail import Message
@@ -50,11 +50,38 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        flash(f'Account created for {form.username.data}!', 'success')
+        token = generate_confirmation_token(form.email.data)
+
+        flash(f'Account created for {form.username.data}! Confirmation email sent to {form.email.data}.', 'success')
 
         return redirect(url_for('home'))
 
     return render_template('register.html', form=form)
+
+
+@app.route('confirm/<token>')
+def confirm(token):
+
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
+    form = ActivationConfirmation()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        email = confirm_token(token) == form.email.data
+
+        if user and email and bcrypt.check_password_hash(user.password, sha256(
+                (form.password.data + form.email.data + SECRET_SALT).encode()).hexdigest()):
+
+            user.confirmed = True
+
+            db.session.add(user)
+            db.session.commit()
+
+        else:
+            flash('Activation Unsuccessful. Please check email and password', 'danger')
+
+    return render_template('activation.html', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -65,8 +92,12 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+        confirm = user.confirmed == True
+        confirmed = ''
+        if confirm == False:
+            confirmed = ' and check to make sure you have activated your account'
 
-        if user and bcrypt.check_password_hash(user.password, sha256(
+        if user and confirm and bcrypt.check_password_hash(user.password, sha256(
                 (form.password.data + form.email.data + SECRET_SALT).encode()).hexdigest()):
 
             login_user(user, remember=form.remember.data)
@@ -76,7 +107,7 @@ def login():
                 url_for('home'))
 
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash(f'Login Unsuccessful. Please check email and password{confirmed}', 'danger')
 
     return render_template('login.html', form=form)
 
