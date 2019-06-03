@@ -4,7 +4,7 @@ from PIL import Image
 from app import app, db, bcrypt, mail
 from flask import render_template, request, make_response, redirect, session, url_for, send_file, flash, abort
 from hashlib import sha256
-from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm, ActivationConfirmation
+from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
 from app.token import generate_confirmation_token, confirm_token
 from app.models import User, Post
 from app.secret import SECRET_SALT
@@ -52,6 +52,8 @@ def register():
 
         token = generate_confirmation_token(form.email.data)
 
+
+
         flash(f'Account created for {form.username.data}! Confirmation email sent to {form.email.data}.', 'success')
 
         return redirect(url_for('home'))
@@ -65,10 +67,13 @@ def confirm(token):
     if current_user.is_authenticated:
         return redirect(url_for('home'))
 
-    form = ActivationConfirmation()
+    form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         email = confirm_token(token) == form.email.data
+
+        if user.confirmed:
+            flash('Account already confirmed. Please login.', 'info')
 
         if user and email and bcrypt.check_password_hash(user.password, sha256(
                 (form.password.data + form.email.data + SECRET_SALT).encode()).hexdigest()):
@@ -78,10 +83,16 @@ def confirm(token):
             db.session.add(user)
             db.session.commit()
 
+            login_user(user, remember=form.remember.data)
+            next_page = request.args.get('next')
+
+            return redirect(next_page) if next_page else redirect(
+                url_for('home'))
+
         else:
             flash('Activation Unsuccessful. Please check email and password', 'danger')
 
-    return render_template('activation.html', form=form)
+    return render_template('login.html', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
