@@ -24,7 +24,6 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py', silent=True)
 
 # Create Database object from flask app object
-# use the function db.create_all() to make the db
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
@@ -32,6 +31,7 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
+# Create mail object from flash app object
 mail = Mail(app)
 
 # Import views
