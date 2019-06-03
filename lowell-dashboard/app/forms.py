@@ -53,28 +53,6 @@ class RegistrationForm(FlaskForm):
             raise ValidationError(
                 'That email is already being used. Please choose a different one')
 
-'''
-Create a activation confirmation form
-'''
-
-
-class ActivationConfirmation(FlaskForm):
-    '''
-    Create a string field and call it email
-    This field will accept email and use the Email validator to make sure it's a email
-    '''
-    email = StringField('Email',
-                        validators=[DataRequired(), Email()])
-    '''
-    Create a string field and call it password
-    This field will take in a string for the password
-    '''
-    password = PasswordField('Password', validators=[DataRequired()])
-    '''
-    Create a submit button
-    '''
-    submit = SubmitField('Submit')
-
 
 '''
 Create a login form
