@@ -8,7 +8,6 @@ from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, 
 from app.token import generate_confirmation_token, confirm_token
 from app.email import send_email
 from app.models import User, Post
-from flask_mail import Message
 from flask_login import login_user, current_user, logout_user, login_required
 
 #db.create_all()
@@ -278,17 +277,10 @@ def user_posts(username):
 
 def send_reset_email(user):
     token = user.get_reset_token()
-    msg = Message(
-        'Password Reset Request',
-        sender='LowellHelpForum@gmail.com',
-        recipients=[
-            user.email])
-    msg.body = f'''To reset your passwork, visit the following link:
-{url_for('reset_token', token=token, _external=True)}
-
-If you did not make this request then simply ignore this email and no changes will be made.
-'''
-    mail.send(msg)
+    reset_url = url_for('reset_token', token=token, _external=True)
+    subject = 'Password Reset Request'
+    html = render_template('reset_email.html', url=reset_url
+    send_email(user.email, subject, html)
 
 
 @app.route('/reset_password', methods=['GET', 'POST'])
