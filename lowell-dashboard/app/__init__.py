@@ -9,6 +9,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
+from flask_migrate import Migrate
+
 
 """
  Logging configuration
@@ -26,6 +28,8 @@ app.config.from_pyfile('config.py', silent=True)
 # use the function db.create_all() to make the db
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+
+migrate = Migrate(app, db)
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
