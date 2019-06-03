@@ -8,10 +8,10 @@ from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, 
 from app.token import generate_confirmation_token, confirm_token
 from app.email import send_email
 from app.models import User, Post
-from app.secret import SECRET_SALT
 from flask_mail import Message
 from flask_login import login_user, current_user, logout_user, login_required
 
+#db.create_all()
 
 @app.route("/index")
 @app.route("/home")
@@ -41,7 +41,7 @@ def register():
             sha256(
                 (form.password.data +
                  form.email.data +
-                 SECRET_SALT).encode()).hexdigest()).decode('utf-8')
+                 app.config['SECURITY_PASSWORD_SALT']).encode()).hexdigest()).decode('utf-8')
 
         user = User(
             username=form.username.data,
@@ -55,7 +55,7 @@ def register():
 
         confirmation_url = url_for('confirm', token=token, _external=True)
         subject = 'Please confirm your email'
-        html = render_template(activation.html, url=confirmation_url)
+        html = render_template('activation.html', url=confirmation_url)
 
         send_email(form.email.data, subject, html)
 
@@ -66,7 +66,7 @@ def register():
     return render_template('register.html', form=form)
 
 
-@app.route('/confirm/<token>')
+@app.route('/confirm/<token>', methods=['GET', 'POST'])
 def confirm(token):
 
     if current_user.is_authenticated:
@@ -81,7 +81,7 @@ def confirm(token):
             flash('Account already confirmed. Please login.', 'info')
 
         if user and email and bcrypt.check_password_hash(user.password, sha256(
-                (form.password.data + form.email.data + SECRET_SALT).encode()).hexdigest()):
+                (form.password.data + form.email.data + app.config['SECURITY_PASSWORD_SALT']).encode()).hexdigest()):
 
             user.confirmed = True
 
@@ -114,7 +114,7 @@ def login():
             confirmed = ' and check to make sure you have activated your account'
 
         if user and confirm and bcrypt.check_password_hash(user.password, sha256(
-                (form.password.data + form.email.data + SECRET_SALT).encode()).hexdigest()):
+                (form.password.data + form.email.data + app.config['SECURITY_PASSWORD_SALT']).encode()).hexdigest()):
 
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
@@ -326,7 +326,7 @@ def reset_token(token):
             sha256(
                 (form.password.data +
                  user.email +
-                 SECRET_SALT).encode()).hexdigest()).decode('utf-8')
+                 app.config['SECURITY_PASSWORD_SALT']).encode()).hexdigest()).decode('utf-8')
         user.password = hashed_password
 
         db.session.commit()
