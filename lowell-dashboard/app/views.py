@@ -53,7 +53,7 @@ def register():
 
         token = generate_confirmation_token(form.email.data)
 
-        confirmation_url = url_for('home'. token=token, _external=True)
+        confirmation_url = url_for('confirm', token=token, _external=True)
         subject = 'Please confirm your email'
         html = render_template(activation.html, url=confirmation_url)
 
@@ -66,7 +66,7 @@ def register():
     return render_template('register.html', form=form)
 
 
-@app.route('confirm/<token>')
+@app.route('/confirm/<token>')
 def confirm(token):
 
     if current_user.is_authenticated:
