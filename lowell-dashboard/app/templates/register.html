@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block head_meta %}
+    <meta name="description" content="Lowell Dashboard register">
+{% endblock %}
+
 {% block content %}
 	<div class="content">
 		<form method="POST" action="">
@@ -83,4 +90,4 @@
 			Already Have An Account? <a href="{{ url_for('login') }}"> Sign In</a>
 		</small>
 	</div>
-{% endblock content %}
+{% endblock %}
