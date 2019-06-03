@@ -6,6 +6,7 @@ from flask import render_template, request, make_response, redirect, session, ur
 from hashlib import sha256
 from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
 from app.token import generate_confirmation_token, confirm_token
+from app.email import send_email
 from app.models import User, Post
 from app.secret import SECRET_SALT
 from flask_mail import Message
@@ -52,7 +53,11 @@ def register():
 
         token = generate_confirmation_token(form.email.data)
 
+        confirmation_url = url_for('home'. token=token, _external=True)
+        subject = 'Please confirm your email'
+        html = render_template(activation.html, url=confirmation_url)
 
+        send_email(form.email.data, subject, html)
 
         flash(f'Account created for {form.username.data}! Confirmation email sent to {form.email.data}.', 'success')
 
