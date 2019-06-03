@@ -1,56 +1,18 @@
-{% extends "base.html" %}
-{% block content %}
-	<div class="content">
-		<form method="POST" action="">
-			<!-- Part of protecting the site from attacks -->
-			{{ form.hidden_tag() }}
-			<fieldset>
-				<legend>Activate account</legend>
-				<div class="form-group">
-					<!-- Uncomment to add css to form -->
-					<!-- {{ form.email.label(class="form-label-css") }} -->
-					<!-- {{ form.email(class="form-field-css") }} -->
-					{{ form.email.label() }}
-					{% if form.email.errors %}
-                        {{ form.email(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.email.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.email() }}
-                    {% endif %}
-				</div>
-				<div class="form-group">
-					<!-- Uncomment to add css to form -->
-					<!-- {{ form.password.label(class="form-label-css") }} -->
-					<!-- {{ form.password(class="form-field-css") }} -->
-					{{ form.password.label() }}
-					{% if form.password.errors %}
-                        {{ form.password(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.password.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.password() }}
-                    {% endif %}
-				</div>
-			</fieldset>
-			<div class="form-group">
-				{{ form.submit() }}
-			</div>
-			<small class="">
-				<a href="{{ url_for('reset_request') }}">Forgot Password?</a>
-			</small>
-		</form>
-	</div>
-	<div class="">
-		<small>
-			<!-- Get the url path for the function login -->
-			Need an Account? <a href="{{ url_for('register') }}"> Sign Up Now</a>
-		</small>
-	</div>
-{% endblock content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	html, body {margin:0px; padding:0px; background-color: #ddd;}
+	.lowelldashboard {text-decoration: none;color: #000;}
+	</style>
+</head>
+<body>
+	<p>Hi,</p>
+
+	<p>Somebody (hopefully you!) requested an activation link for a <a href="https://lowelldashboard.com" class="lowelldashboard">Lowell Dashboard</a> account.</p>
+
+	<p>Your activation link is <a href="{{ url }}">here: {{ url }}</a>. It will expire in 1 hour.</p>
+
+	<p>- <a href="https://lowelldashboard.com" class="lowelldashboard">Lowell Dashboard Team</a></p>
+</body>
+</html>
