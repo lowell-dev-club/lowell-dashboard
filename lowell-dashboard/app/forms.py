@@ -1,5 +1,5 @@
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from app.models import User
 from flask_login import current_user
 from flask_wtf.file import FileField, FileAllowed
@@ -36,6 +36,10 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField(
         'Confirm Password', validators=[
             DataRequired(), EqualTo('password')])
+    '''
+    Create reCAPTCHA field
+    '''
+    recaptcha = RecaptchaField()
     '''
 	Create a submit button
 	'''
