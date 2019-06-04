@@ -19,6 +19,7 @@ RECAPTCHA_USE_SSL = False
 RECAPTCHA_OPTIONS = {'theme':'white'}
 SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
 '''
 Configurations for the email api
