@@ -279,7 +279,7 @@ def send_reset_email(user):
     token = user.get_reset_token()
     reset_url = url_for('reset_token', token=token, _external=True)
     subject = 'Password Reset Request'
-    html = render_template('reset_email.html', url=reset_url
+    html = render_template('reset_email.html', url=reset_url)
     send_email(user.email, subject, html)
 
 
