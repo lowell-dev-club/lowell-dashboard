@@ -10,7 +10,6 @@ from app.email import send_email
 from app.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
-#db.create_all()
 
 @app.route("/index")
 @app.route("/home")
