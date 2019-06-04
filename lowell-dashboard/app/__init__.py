@@ -28,8 +28,11 @@ app.config.from_pyfile('config.py', silent=True)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
+# Create Migrate object from flask app object
+# to manage adding new colums and tables to db
 migrate = Migrate(app, db)
 
+# Create Login manager
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
