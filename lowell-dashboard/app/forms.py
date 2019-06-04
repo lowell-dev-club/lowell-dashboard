@@ -1,10 +1,11 @@
-from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed
-from flask_login import current_user
 from app import db
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from flask_wtf import FlaskForm, RecaptchaField
 from app.models import User
+from flask_login import current_user
+from flask_wtf.file import FileField, FileAllowed
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+
 
 def model_exists(model_class):
     try:
@@ -45,6 +46,10 @@ class RegistrationForm(FlaskForm):
         'Confirm Password', validators=[
             DataRequired(), EqualTo('password')])
     '''
+    Create reCAPTCHA field
+    '''
+    recaptcha = RecaptchaField()
+    '''
 	Create a submit button
 	'''
     submit = SubmitField('Sign Up')
@@ -65,6 +70,7 @@ class RegistrationForm(FlaskForm):
 '''
 Create a login form
 '''
+
 
 class LoginForm(FlaskForm):
     '''
@@ -87,6 +93,7 @@ class LoginForm(FlaskForm):
 	'''
     submit = SubmitField('Login')
 
+
 class UpdateAccountForm(FlaskForm):
     '''
     Create a string field and call it username
@@ -104,7 +111,8 @@ class UpdateAccountForm(FlaskForm):
     Create a file field that will accept a file
     The validator for this field is a file allower that only accepts files with extensions of jpg and png
     '''
-    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    picture = FileField('Update Profile Picture', validators=[
+                        FileAllowed(['jpg', 'png'])])
     '''
     Create a submit button
     '''
@@ -121,12 +129,15 @@ class UpdateAccountForm(FlaskForm):
         if email.data != current_user.email:
             user = User.query.filter_by(email=email.data).first()
             if user:
-                raise ValidationError('That email is already being used. Please choose a different one')
+                raise ValidationError(
+                    'That email is already being used. Please choose a different one')
+
 
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
+
 
 class RequestResetForm(FlaskForm):
     email = StringField('Email',
@@ -141,6 +152,7 @@ class RequestResetForm(FlaskForm):
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password',
-                                     validators=[DataRequired(), EqualTo('password')])
+    confirm_password = PasswordField(
+        'Confirm Password', validators=[
+            DataRequired(), EqualTo('password')])
     submit = SubmitField('Reset Password')

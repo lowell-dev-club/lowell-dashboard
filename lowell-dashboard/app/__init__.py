@@ -5,11 +5,11 @@ import logging
 from flask import Flask
 
 # Import Flask modules to create objects for our app
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
 from flask_mail import Mail
 from flask_migrate import Migrate
+from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
+from flask_sqlalchemy import SQLAlchemy
 
 
 """
@@ -25,7 +25,6 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py', silent=True)
 
 # Create Database object from flask app object
-# use the function db.create_all() to make the db
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
@@ -35,6 +34,7 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
+# Create mail object from flash app object
 mail = Mail(app)
 
 # importing all the models and initializing them
