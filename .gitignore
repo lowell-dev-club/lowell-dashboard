@@ -108,4 +108,3 @@ venv.bak/
 lowell-dashboard/app/secret.py
 lowell-dashboard/app/app.db
 lowell-dashboard/app.db
-lowell-dashboard/migrations
