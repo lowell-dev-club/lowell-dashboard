@@ -10,7 +10,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
-
+from config import Config
 
 """
  Logging configuration
@@ -22,7 +22,7 @@ logging.getLogger().setLevel(logging.DEBUG)
 app = Flask(__name__)
 
 # Add configurations to app
-app.config.from_pyfile('config.py', silent=True)
+app.config.from_object(Config)
 
 # Create Database object from flask app object
 db = SQLAlchemy(app)
