@@ -1,0 +1,10 @@
+input[type=text] {
+    border: none;
+    border-bottom: 4px solid #444;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+input[type=text]:focus {
+    border-bottom: 4px solid #1dad35;
+    width: 100%;
+}
