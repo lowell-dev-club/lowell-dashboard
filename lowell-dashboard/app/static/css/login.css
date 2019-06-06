@@ -1,10 +1,17 @@
-input[type=text] {
+label {
+	font-size: 25px;
+}
+input[type=text], input[type=password] {
+	margin-top: -5px;
+	height: 18px;
+	font-size: 15px;
+	background-color: #ddd;
     border: none;
     border-bottom: 4px solid #444;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
-input[type=text]:focus {
+input[type=text]:focus, input[type=password]:focus {
     border-bottom: 4px solid #1dad35;
-    width: 100%;
+    width: 80%;
 }
