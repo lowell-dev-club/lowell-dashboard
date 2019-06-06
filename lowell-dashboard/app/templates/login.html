@@ -2,6 +2,10 @@
 
 {% block title %}Login{% endblock %}
 
+{% block head_css %}
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/login.css') }}>
+{% endblock %}
+
 {% block head_meta %}
     <meta name="description" content="Lowell Dashboard login">
 {% endblock %}
@@ -14,10 +18,10 @@
 			<fieldset>
 				<legend>Log in</legend>
 				<div class="form-group">
-					<!-- Uncomment to add css to form -->
-					<!-- {{ form.email.label(class="form-label-css") }} -->
-					<!-- {{ form.email(class="form-field-css") }} -->
-					{{ form.email.label() }}
+					{{ form.email.label(class="form-label-css") }}
+					{{ form.email(class="form-field-css") }}
+					<!-- Uncomment to not use css in the form -->
+					<!-- {{ form.email.label() }} -->
 					{% if form.email.errors %}
                         {{ form.email(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
@@ -30,10 +34,10 @@
                     {% endif %}
 				</div>
 				<div class="form-group">
-					<!-- Uncomment to add css to form -->
-					<!-- {{ form.password.label(class="form-label-css") }} -->
-					<!-- {{ form.password(class="form-field-css") }} -->
-					{{ form.password.label() }}
+					{{ form.password.label(class="form-label-css") }}
+					{{ form.password(class="form-field-css") }}
+					<!-- Uncomment to not use css in the form -->
+					<!--{{ form.password.label() }}-->
 					{% if form.password.errors %}
                         {{ form.password(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
