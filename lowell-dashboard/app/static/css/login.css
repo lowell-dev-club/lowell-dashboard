@@ -1,6 +1,7 @@
 label {
 	font-size: 25px;
-	padding-right: 10px;
+	margin-top: 17px;
+	margin-bottom: 15px;
 }
 input[type=text], input[type=password], input[type=text]:disabled, input[type=password]:disabled {
 	margin-top: -5px;
@@ -13,21 +14,30 @@ input[type=text], input[type=password], input[type=text]:disabled, input[type=pa
     -webkit-transition: width 0.8s ease-in-out;
     transition: width 0.8s ease-in-out;
 }
-input[type=text]:focus, input[type=password]:focus, input[type=text]:hover, input[type=password]:hover {
+input[type=text]:focus, input[type=password]:focus {
     border-bottom: 3px solid #1dad35;
     width: 70%;
 }
-fieldset {
-	margin-top: 20px;
+input[type=text]:hover, input[type=password]:hover {
+	animation: coloring 3s infinite;
+	border-bottom: 3px solid currentColor;
 }
-legend {
+@keyframes coloring {
+  0%, 100% { color: #444; }
+  50% { color: #1dad35; }
+}
+fieldset {
 	text-align: center;
+	margin: 20px 20px 20px 20px;
+}
+h2 {
 	text-decoration: underline;
-	font-size: 30px;
+	font-size: 40px;
+	margin-bottom: 17px;
+	margin-top: -5px;
 }
 #submit {
 	border-radius: 8px;
-	margin-left: 12px;
 	margin-bottom: 5px;
 	font-size: 20px;
 	background-color: #ddd; 
@@ -37,7 +47,6 @@ legend {
  	-webkit-transition-duration: 0.5s;
  	transition-duration: 0.5s;
 }
-
 #submit:hover {
     background-color: #4CAF50;
     color: #ddd;
@@ -45,16 +54,10 @@ legend {
 .form-group {
 	margin-top: 10px;
 }
-.password {
-	margin-bottom: -1px;
-}
-.create {
-	margin-bottom: 10px;
-}
 .extra {
 	font-size: 14px;
-	margin-top: 6px;
-	margin-left: 10px;
+	margin-top: 8px;
+	margin-bottom: 5px;
 }
 .extra-link, .extra-link:visited {
 	text-decoration: none;
