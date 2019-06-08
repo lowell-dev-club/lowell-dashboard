@@ -26,16 +26,6 @@ input[type=text]:hover, input[type=password]:hover {
   0%, 100% { color: #444; }
   50% { color: #1dad35; }
 }
-fieldset {
-	text-align: center;
-	margin: 20px 20px 20px 20px;
-}
-h2 {
-	text-decoration: underline;
-	font-size: 40px;
-	margin-bottom: 17px;
-	margin-top: -5px;
-}
 #submit {
 	border-radius: 8px;
 	margin-bottom: 5px;
