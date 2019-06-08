@@ -1,12 +1,7 @@
 footer {
+	padding-top: 10px;
 	text-align: center;
 	background: #ccc;
-}
-footer h3 {
-	font-size: 35px;
-	text-decoration: underline;
-	padding-top: 10px;
-	margin-bottom: 5px;
 }
 footer h4 {
 	margin-top: -5px;
@@ -17,6 +12,7 @@ footer h5 {
 	font-size: 25px;
 	margin-top: -5px;
 	margin-bottom: -5px;
+	text-decoration: underline;
 }
 .grid {
     margin-left: -50px;
@@ -39,7 +35,7 @@ footer h5 {
 }
 footer a, footer a:visited {
 	text-decoration: none;
-	color: #191919;
+	color: #001f51;
 	margin: auto;
 	-webkit-transition-duration: 0.5s;
  	transition-duration: 0.5s;
