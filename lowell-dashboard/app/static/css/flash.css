@@ -1,9 +1,3 @@
-*, ::after, ::before {
-    box-sizing: border-box;
-}
-div {
-    display: block;
-}
 .container {
     width: 80%;
     margin: 10px auto 10px auto;
@@ -20,7 +14,7 @@ div {
     border: 1px solid transparent;
     border-radius: .25rem;
 }
-.fade {
+.fade-flash {
     transition: opacity .15s linear;
 }
 .alert-dismissible {
@@ -46,86 +40,34 @@ div {
     background-color: #cce5ff;
     border-color: #b8daff;
 }
-.alert-dismissible .close {
+.alert-dismissible .close-button {
     position: absolute;
     top: 0;
     right: 0;
     padding: .75rem 1.25rem;
     color: inherit;
 }
-[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-    cursor: pointer;
-}
-button.close {
-    padding: 0;
-    background-color: transparent;
-    border: 0;
+.close-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-}
-.close {
-    float: right;
+    background-color: #00000000;
+    text-shadow: 0 1px 0 #fff;
+    font: 400 11px system-ui;
+    align-items: flex-start;
+    display: inline-block;
+    font-family: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    text-align: center;
+    overflow: visible;
     font-size: 1.5rem;
     font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: .5;
-}
-[type=button], [type=reset], [type=submit], button {
-    -webkit-appearance: button;
-}
-button, select {
-    text-transform: none;
-}
-button, input {
-    overflow: visible;
-}
-button, input, optgroup, select, textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-}
-button {
     border-radius: 0;
-}
-button {
-    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
-    border-style: solid;
-    border-width: 1px;
-    padding: 1px 7px 2px;
-}
-button {
-    align-items: flex-start;
-    text-align: center;
-    cursor: default;
-    color: buttontext;
-    background-color: buttonface;
-    box-sizing: border-box;
-    padding: 2px 6px 3px;
-    border-width: 2px;
-    border-style: outset;
-    border-color: buttonface;
-    border-image: initial;
-}
-button {
-    text-rendering: auto;
-    color: initial;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    margin: 0em;
-    font: 400 11px system-ui;
-}
-button {
-    -webkit-writing-mode: horizontal-tb !important;
-}
-button {
-    -webkit-appearance: button;
+    cursor: pointer;
+    line-height: 1;
+    float: right;
+    opacity: .5;
+    border: 0;
+    margin: 0;
 }
