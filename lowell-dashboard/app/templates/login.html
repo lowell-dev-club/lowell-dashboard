@@ -48,24 +48,17 @@
                     {% else %}
                         {{ form.password() }}
                     {% endif %}
+                    <p class="extra password"><a href="{{ url_for('reset_request') }}" class="extra-link">Forgot Password?</a></p>
 				</div>
-				<div class="">
+				<div class="form-group">
 					{{ form.remember() }}
 					{{ form.remember.label() }}
 				</div>
-			</fieldset>
-			<div class="form-group">
+				<div class="form-group">
 				{{ form.submit() }}
 			</div>
-			<small class="">
-				<a href="{{ url_for('reset_request') }}">Forgot Password?</a>
-			</small>
+			<p class="extra">Need an Account? <a href="{{ url_for('register') }}" class="extra-link"> Sign Up Now</a></p>
+			</fieldset>
 		</form>
-	</div>
-	<div class="">
-		<small>
-			<!-- Get the url path for the function login -->
-			Need an Account? <a href="{{ url_for('register') }}"> Sign Up Now</a>
-		</small>
 	</div>
 {% endblock content %}
