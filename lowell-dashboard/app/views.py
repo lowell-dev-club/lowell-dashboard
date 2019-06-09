@@ -28,6 +28,41 @@ def disclaimer():
     return render_template('disclaimer.html')
 
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    f_name, f_ext = os.path.splitext(form_picture.filename)
+    picture_filename = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/img', picture_filename)
+
+    output_size = (125, 125)
+    image = Image.open(form_picture)
+    image.thumbnail(output_size)
+    image.save(picture_path)
+
+    return picture_filename
+
+
+@app.route('/news')
+def news():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(
+        Post.date_posted.desc()).paginate(
+        page=page, per_page=5)
+
+    return render_template('news.html', posts=posts)
+
+
+'''
+Forms
+'''
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -127,26 +162,6 @@ def login():
     return render_template('login.html', form=form)
 
 
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('home'))
-
-
-def save_picture(form_picture):
-    random_hex = secrets.token_hex(8)
-    f_name, f_ext = os.path.splitext(form_picture.filename)
-    picture_filename = random_hex + f_ext
-    picture_path = os.path.join(app.root_path, 'static/img', picture_filename)
-
-    output_size = (125, 125)
-    image = Image.open(form_picture)
-    image.thumbnail(output_size)
-    image.save(picture_path)
-
-    return picture_filename
-
-
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
@@ -172,17 +187,7 @@ def account():
     image_file = url_for('static', filename='img/' + current_user.image_file)
 
     return render_template('account.html', image_file=image_file, form=form)
-
-
-@app.route('/news')
-def news():
-    page = request.args.get('page', 1, type=int)
-    posts = Post.query.order_by(
-        Post.date_posted.desc()).paginate(
-        page=page, per_page=5)
-
-    return render_template('news.html', posts=posts)
-
+    
 
 @app.route('/post/new', methods=['GET', 'POST'])
 @login_required
@@ -328,3 +333,13 @@ def reset_token(token):
         return redirect(url_for('login'))
         
     return render_template('reset_token.html', form=form)
+
+
+'''
+Error Paths
+'''
+
+
+@app.errorhandler(404)
+def 404_error():
+    return render_template('404.html')
