@@ -280,14 +280,6 @@ def user_posts(username):
     return render_template('user_posts.html', posts=posts, user=user)
 
 
-def send_reset_email(user):
-    token = user.get_reset_token()
-    reset_url = url_for('reset_token', token=token, _external=True)
-    subject = 'Password Reset Request'
-    html = render_template('reset_email.html', url=reset_url)
-    send_email(user.email, subject, html)
-
-
 @app.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():
     if current_user.is_authenticated:
@@ -296,7 +288,11 @@ def reset_request():
     form = RequestResetForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        send_reset_email(user)
+        token = user.get_reset_token()
+        reset_url = url_for('reset_token', token=token, _external=True)
+        subject = 'Password Reset Request'
+        html = render_template('reset_email.html', url=reset_url)
+        send_email(user.email, subject, html)
 
         flash(
             'An email has been sent with instructions to reset your password',
@@ -341,5 +337,5 @@ Error Paths
 
 
 @app.errorhandler(404)
-def 404_error():
+def not_found(e):
     return render_template('404.html')
