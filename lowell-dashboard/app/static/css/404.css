@@ -166,3 +166,14 @@
 		transform: translate(4px, 4px);
 	}
 }
+.message {
+	margin: auto;
+	font-size: 0.1em;
+	color: rgb(0, 165, 41);
+	text-decoration: none;
+	-webkit-transition-duration: 0.5s;
+ 	transition-duration: 0.5s;
+}
+.message a:hover, .message a:visited:hover {
+	color: rgb(0, 209, 51));
+}
