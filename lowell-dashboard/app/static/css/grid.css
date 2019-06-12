@@ -1,0 +1,13 @@
+.grid {
+    margin-left: -50px;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-column-gap: 10px;
+}
+@media only screen and (max-width: 750px) {
+	.grid {
+    	display: grid;
+  		grid-template-columns: repeat(2, 50%);
+  		grid-column-gap: 5px;
+	}
+}
