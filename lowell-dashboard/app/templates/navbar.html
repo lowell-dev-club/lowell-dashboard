@@ -1,7 +1,7 @@
 <section class="navigation">
     <div class="nav-container">
         <div class="brand">
-            <a href="/home"><i class="fas fa-home"></i></a>
+            <a href="/home"><i class="fas fa-home home"></i></a>
         </div>
         <nav>
             <div class="nav-mobile"><a id="nav-toggle" href="#"><span></span></a></div>
@@ -24,7 +24,7 @@
                     <a href="#">Class Discussions <i class="fas fa-inbox nav-icon"></i></a>
                 </li>
                 <li>
-                {% if current_user.is_authenticated %} <!-- Will later change to if user is admin -->
+                {% if current_user.is_authenticated %}
                     <a href="#">News <i class="far fa-newspaper nav-icon"></i></a>
                     <ul class="nav-dropdown">
                         <li>
