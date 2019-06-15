@@ -7,8 +7,24 @@
 	margin-top: 25%;
 	margin-left: auto;
 	margin-right: auto;
+	margin: 25% auto 40px auto;
 	max-width: 80%;
 	font-size: 0.2em;
+}
+.links {
+	margin-bottom: 30px;
+	font-size: 0.1em;
+}
+.links a, .links a:visited {
+	padding: 10px 10px 10px 10px;
+	border-radius: 4px;
+	background-color: rgb(0, 72, 188);
+	text-decoration: none;
+	color: rgb(0, 140, 53);
+}
+.links a:hover, .links a:visited:hover {
+	background-color: rgb(0, 91, 239);
+	color: rgb(0, 224, 85);
 }
 .glitch {
 	margin-top: 0;
@@ -22,6 +38,9 @@
 	}
 	.glitch {
 		margin-top: 2%;
+	}
+	.links {
+		font-size: 0.125em;
 	}
 }
 @media only screen and (max-width: 1500px) {
