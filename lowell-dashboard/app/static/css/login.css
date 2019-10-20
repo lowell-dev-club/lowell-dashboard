@@ -3,12 +3,15 @@
 	margin-top: 8px;
 	margin-bottom: 5px;
 }
-.extra-link, .extra-link:visited {
+
+.extra-link,
+.extra-link:visited {
 	text-decoration: none;
-	-webkit-transition-duration: 0.5s;
- 	transition-duration: 0.5s;
+	transition-duration: 0.5s;
 }
-.extra-link:hover, .extra-link:visited:hover {
+
+.extra-link:hover,
+.extra-link:visited:hover {
 	text-decoration: none;
 	color: #00b6ff;
 }
