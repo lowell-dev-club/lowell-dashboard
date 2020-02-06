@@ -1,2 +1,4 @@
-html,body{margin:0px;padding:0px;background-color:#ddd;font-family:'Titillium Web';font-size:17px;}
+html,
+body{margin:0px;padding:0px;background-color:#ddd;font-family:'Titillium Web';font-size:17px;}
 body{font:normal 85% Arial,Helvetica,sans-serif;}
+.center-align{text-align:center;}
