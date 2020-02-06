@@ -15,6 +15,7 @@ def model_exists(model_class):
         print(e)
         return False
 
+
 '''
 Create a registation form
 '''
@@ -58,13 +59,15 @@ class RegistrationForm(FlaskForm):
         if model_exists(User):
             user = User.query.filter_by(username=username.data).first()
             if user:
-                raise ValidationError('That username is taken. Please choose a different one')
+                raise ValidationError(
+                    'That username is taken. Please choose a different one')
 
     def validate_email(self, email):
         if model_exists(User):
             user = User.query.filter_by(email=email.data).first()
             if user:
-                raise ValidationError('That email is already being used. Please choose a different one')
+                raise ValidationError(
+                    'That email is already being used. Please choose a different one')
 
 
 '''
@@ -123,7 +126,8 @@ class UpdateAccountForm(FlaskForm):
             if username.data != current_user.username:
                 user = User.query.filter_by(username=username.data).first()
                 if user:
-                    raise ValidationError('That username is taken. Please choose a different one')
+                    raise ValidationError(
+                        'That username is taken. Please choose a different one')
 
     def validate_email(self, email):
         if email.data != current_user.email:
@@ -148,7 +152,9 @@ class RequestResetForm(FlaskForm):
         if model_exists(User):
             user = User.query.filter_by(email=email.data).first()
             if user is None:
-                raise ValidationError('There is no account with that email. You must register first.')
+                raise ValidationError(
+                    'There is no account with that email. You must register first.')
+
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
