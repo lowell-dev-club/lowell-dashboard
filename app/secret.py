@@ -1,0 +1,5 @@
+SECRET_KEY = 'asfhasfgaljkfgbasjfgqwyiuflh2iuy487grouy3g3874gu32iu2g83u4i32872g3i32ugbl'
+EMAIL_PASS = 'lsekrthdtihasfja'
+SECRET_SALT = 'Python is superior'
+RECAPTCHA_SITE_KEY = '6Lf-_KYUAAAAANDY7YSwRSayrIIDAc4TmpcCEMMx'
+RECAPTCHA_SECRET_KEY = '6Lf-_KYUAAAAALB-8dEwEGSENDieW0dflLnseNv4'
