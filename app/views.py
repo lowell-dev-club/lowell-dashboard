@@ -92,7 +92,9 @@ def register():
 
         send_email(form.email.data, subject, html)
 
-        flash(f'Account created for {form.username.data}! Confirmation email sent to {form.email.data}.', 'success')
+        flash(
+            f'Account created for {form.username.data}! Confirmation email sent to {form.email.data}.',
+            'success')
 
         return redirect(url_for('home'))
 
@@ -113,8 +115,12 @@ def confirm(token):
         if user.confirmed:
             flash('Account already confirmed. Please login.', 'info')
 
-        if user and email and bcrypt.check_password_hash(user.password, sha256(
-                (form.password.data + form.email.data + app.config['SECURITY_PASSWORD_SALT']).encode()).hexdigest()):
+        if user and email and bcrypt.check_password_hash(
+            user.password,
+            sha256(
+                (form.password.data +
+                 form.email.data +
+                 app.config['SECURITY_PASSWORD_SALT']).encode()).hexdigest()):
 
             user.confirmed = True
 
@@ -128,7 +134,9 @@ def confirm(token):
                 url_for('home'))
 
         else:
-            flash('Activation Unsuccessful. Please check email and password', 'danger')
+            flash(
+                'Activation Unsuccessful. Please check email and password',
+                'danger')
 
     return render_template('login.html', form=form)
 
@@ -141,13 +149,17 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        confirm = user.confirmed == True
+        confirm = user.confirmed
         confirmed = ''
-        if confirm == False:
+        if not confirm:
             confirmed = ' and check to make sure you have activated your account'
 
-        if user and confirm and bcrypt.check_password_hash(user.password, sha256(
-                (form.password.data + form.email.data + app.config['SECURITY_PASSWORD_SALT']).encode()).hexdigest()):
+        if user and confirm and bcrypt.check_password_hash(
+            user.password,
+            sha256(
+                (form.password.data +
+                 form.email.data +
+                 app.config['SECURITY_PASSWORD_SALT']).encode()).hexdigest()):
 
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
@@ -157,7 +169,9 @@ def login():
                 url_for('home'))
 
         else:
-            flash(f'Login Unsuccessful. Please check email and password{confirmed}', 'danger')
+            flash(
+                f'Login Unsuccessful. Please check email and password{confirmed}',
+                'danger')
 
     return render_template('login.html', form=form)
 
@@ -187,7 +201,7 @@ def account():
     image_file = url_for('static', filename='img/' + current_user.image_file)
 
     return render_template('account.html', image_file=image_file, form=form)
-    
+
 
 @app.route('/post/new', methods=['GET', 'POST'])
 @login_required
@@ -327,7 +341,7 @@ def reset_token(token):
         flash(f'Your password has been updated!', 'success')
 
         return redirect(url_for('login'))
-        
+
     return render_template('reset_token.html', form=form)
 
 
