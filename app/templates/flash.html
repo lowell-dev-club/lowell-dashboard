@@ -1,16 +1,43 @@
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        <div class="container">
-        {% for category, m in messages %}
-            {% if category %}
-                <div class="alert alert-{{ category }} alert-dismissible fade-flash show-flash">
-        	{% else %}
-            	<div class="alert alert-info alert-dismissible fade-flash show-flash">
-        	{% endif %}
-        	{{ m }}
-            <button type="button" class="close-button" data-dismiss="alert">&times;</button>
-        	</div>
-        {% endfor %}
-        </div>
-	{% endif %}
+{% with errors = get_flashed_messages(category_filter=["error"]) %}
+{% if errors %}
+{% for msg in errors %}
+<div class="alert">
+  <span class="closebtn">&times;</span>
+  {{ msg }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% with errors = get_flashed_messages(category_filter=["success"]) %}
+{% if errors %}
+{% for msg in errors %}
+<div class="alert success">
+  <span class="closebtn">&times;</span>  
+  {{ msg }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% with errors = get_flashed_messages(category_filter=["info"]) %}
+{% if errors %}
+{% for msg in errors %}
+<div class="alert info">
+  <span class="closebtn">&times;</span>  
+  {{ msg }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% with errors = get_flashed_messages(category_filter=["warning"]) %}
+{% if errors %}
+{% for msg in errors %}
+<div class="alert warning">
+  <span class="closebtn">&times;</span>  
+  {{ msg }}
+</div>
+{% endfor %}
+{% endif %}
 {% endwith %}
