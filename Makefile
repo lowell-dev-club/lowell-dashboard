@@ -8,5 +8,5 @@ update:
 clean:
 	pystarter clean
 
-run: clean test
+run: clean
 	python3 run.py
