@@ -1,7 +1,7 @@
 <section class="navigation">
     <div class="nav-container">
         <div class="brand">
-            <a href="/home"><i class="fas fa-home home"></i></a>
+            <a href="{{ url_for('home') }}"><i class="fas fa-home home"></i></a>
         </div>
         <nav>
             <div class="nav-mobile"><a id="nav-toggle" href="#"><span></span></a></div>
@@ -28,14 +28,14 @@
                     <a href="#">News <i class="far fa-newspaper nav-icon"></i></a>
                     <ul class="nav-dropdown">
                         <li>
-                            <a href="/news">News <i class="far fa-newspaper nav-icon"></i></a>
+                            <a href="{{ url_for('news') }}">News <i class="far fa-newspaper nav-icon"></i></a>
                         </li>
                         <li>
-                            <a href="/post/new">Post News <i class="far fa-plus-square"></i></a>
+                            <a href="{{ url_for('new_post') }}">Post News <i class="far fa-plus-square"></i></a>
                         </li>
                     </ul>
                 {% else %}
-                    <a href="/news">News <i class="far fa-newspaper nav-icon"></i></a>
+                    <a href="{{ url_for('news') }}">News <i class="far fa-newspaper nav-icon"></i></a>
                 {% endif %}
                 </li>
                 <li>
@@ -43,20 +43,20 @@
                     <a href="#">{{ current_user.username }} <i class="fas fa-user-cog nav-icon"></i></a>
                     <ul class="nav-dropdown">
                         <li>
-                            <a href="/account">Your Profile <i class="fas fa-cogs nav-icon"></i></a>
+                            <a href="{{ url_for('account') }}">Your Profile <i class="fas fa-cogs nav-icon"></i></a>
                         </li>
                         <li>
-                            <a href="/logout">Logout <i class="fas fa-sign-out-alt nav-icon"></i></a>
+                            <a href="{{ url_for('logout') }}">Logout <i class="fas fa-sign-out-alt nav-icon"></i></a>
                         </li>
                     </ul>
                 {% else %}
                     <a href="#">Login <i class="fas fa-sign-in-alt nav-icon"></i></a>
                     <ul class="nav-dropdown">
                         <li>
-                            <a href="/login">Login <i class="fas fa-sign-in-alt nav-icon"></i></a>
+                            <a href="{{ url_for('login') }}">Login <i class="fas fa-sign-in-alt nav-icon"></i></a>
                         </li>
                         <li>
-                            <a href="/register">Register <i class="fas fa-user-plus nav-icon"></i></i></a>
+                            <a href="{{ url_for('register') }}">Register <i class="fas fa-user-plus nav-icon"></i></i></a>
                         </li>
                     </ul>
                 {% endif %}
