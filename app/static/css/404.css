@@ -22,9 +22,10 @@
 .links a:visited {
 	padding: 10px 10px 10px 10px;
 	border-radius: 4px;
-	background-color: rgb(0, 72, 188);
+	background-color: rgb(0, 54, 140);
 	text-decoration: none;
-	color: rgb(0, 140, 53);
+	color: rgb(0, 219, 7);
+	transition: 0.5s;
 }
 
 .links a:hover,
