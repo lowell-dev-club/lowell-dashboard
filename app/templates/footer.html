@@ -4,36 +4,36 @@
         <div class="column">
             <ul>
                 <h5>Quick Links</h5>
-                <a href="/login"><p>Login</p></a>
-                <a href="/register"><p>Register</p></a>
-                <a href="/reset_password"><p>Reset Password</p></a>
+                <a href="{{ url_for('login') }}"><p>Login</p></a>
+                <a href="{{ url_for('register') }}"><p>Register</p></a>
+                <a href="{{ url_for('reset_request') }}"><p>Reset Password</p></a>
             </ul>
         </div>
 
         <div class="column">
             <ul>
                 <h5>Forms</h5>
-                <a href="/report/bug"><p>Report Bugs</p></a>
-                <a href="/post/new"><p>Create News</p></a>
+                <a href="#"><p>Report Bugs</p></a>
+                <a href="{{ url_for('new_post') }}"><p>Create News</p></a>
             </ul>
         </div>
 
         <div class="column">
             <ul>
                 <h5>Help</h5>
-                <a href="/help"><p>Quick Help</p></a>
-                <a href="/help/faq"><p>FAQ</p></a>
+                <a href="#"><p>Quick Help</p></a>
+                <a href="#"><p>FAQ</p></a>
             </ul>
         </div>
 
         <div class="column">
             <ul>
                 <h5>Policies</h5>
-                <a href="/files/disclaimer"><p>Disclaimer</p></a>
-                <a href="/files/license"><p>License</p></a>
-                <a href="/files/privacy"><p>Privacy</p></a>
-                <a href="/files/terms"><p>Terms</p></a>
-                <a href="/files/guidelines"><p>Posting Guidelines</p></a>
+                <a href="{{ url_for('disclaimer') }}"><p>Disclaimer</p></a>
+                <a href="{{ url_for('license') }}"><p>License</p></a>
+                <a href="#"><p>Privacy</p></a>
+                <a href="#"><p>Terms</p></a>
+                <a href="#"><p>Posting Guidelines</p></a>
             </ul>
         </div>
 
