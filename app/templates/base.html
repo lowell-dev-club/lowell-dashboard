@@ -72,18 +72,24 @@
 
 </head>
 <body>
-
 	{% include "navbar.html" %}
-
 	{% include "flash.html" %}
-
     {% block content %}
     {% endblock %}
-
+    {% include "footer.html" %}
     {% block trailing_js %}
     {% endblock %}
+    <script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
 
-    {% include "footer.html" %}
-    
+    for (i = 0; i < close.length; i++) {
+    close[i].onclick = function(){
+        var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+        }
+    }
+    </script>
 </body>
 </html>
